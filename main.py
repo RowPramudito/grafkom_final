@@ -4,7 +4,14 @@ import turtle
 from turtle import TurtleScreen, RawTurtle
 
 
-# membuat kotak2 pixel
+#variabel global
+state = []
+
+# rotasi
+
+    
+
+# membuat kotak2 pixel  
 def draw_rectangle(t, x, y):
     angle = 90
     t.penup()
@@ -33,6 +40,7 @@ def DDA(x1,y1,x2,y2):
     for i in range(length+1):
         # print(round(x),round(y))
         points.append((x, y))
+        state.append((x,y))
         x = x+dx
         y = y+dy
     
@@ -109,6 +117,8 @@ def draw_circle(radius):
 def draw_line():
     for x, y in DDA(0, 0, 0, 100):
         draw_rectangle(ttl, x, y)
+        print("Ini dari state")
+        print(state)
 
 def draw_triangle():
     points = []
@@ -123,6 +133,7 @@ def draw_triangle():
     points.extend(side2)
 
     print(points)
+    state.append(points)
 
     for x, y in points:
         draw_rectangle(ttl, x, y)
@@ -144,6 +155,8 @@ def draw_box():
 
     for x, y in points:
         draw_rectangle(ttl, x, y)
+
+# def rotate_object(pointsA, t, xp, yp):
 
 
 if __name__ == '__main__':
@@ -181,6 +194,29 @@ if __name__ == '__main__':
                               command=lambda: draw_line()).place(x=660, y=130)
     button_hapus = ttk.Button(root, text='Hapus Objek', style='TButton', width=20, 
                               command=lambda: ttl.clear()).place(x=660, y=180)
-
-
+    # # Rotasi
+    input_sudut = ttk.Entry(root,text='Rotate', width=5,
+                               ).place(x=520,y=227)
+    label_rotasi = Label(root, text='Rotation', background='#d9d9d9',
+                       font=('Arial', 11)).place(x=515, y=200)
+    label_derajat = Label(root, text='°', background='#d9d9d9',
+                       font=('Arial', 14)).place(x=560, y=220)
+    button_rotate = ttk.Button(root,text='Rotate', style='TButton', width=10,
+                               ).place(x=580,y=225)
+    
+    # Warna
+    label_warna = Label(root, text='Color', background='#d9d9d9',
+                       font=('Arial', 11)).place(x=515, y=260)
+    button_fill = ttk.Button(root, text='Fill Color', style='TButton', width=20,
+                                ).place(x=520, y=290)
+    button_line = ttk.Button(root, text='Line Color', style='TButton', width=20,
+                                ).place(x=660, y=290)
+    
+    # Scale
+    
+    label_frame_scale = ttk.Labelframe(root, text='scale',width=200,height=150
+                                       ).place(x=30, y=400)
+    
+    
+    
     root.mainloop()
