@@ -9,7 +9,8 @@ package main;
  * @author OWNER
  */
 import java.awt.*;
-import static java.lang.Boolean.*;
+import java.math.*;
+
 public class Panel extends javax.swing.JFrame {
 
     /**
@@ -52,7 +53,13 @@ public class Panel extends javax.swing.JFrame {
         inputY = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        translasiInput = new javax.swing.JButton();
+        translasiRight = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        inputderajat = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        buttonRotation = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        translasiLeft = new javax.swing.JButton();
 
         btnClear1.setText("Clear");
         btnClear1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +125,7 @@ public class Panel extends javax.swing.JFrame {
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,23 +159,41 @@ public class Panel extends javax.swing.JFrame {
 
         jLabel3.setText("Translasi");
 
-        inputX.setText("0");
         inputX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputXActionPerformed(evt);
             }
         });
 
-        inputY.setText("0");
-
         jLabel4.setText("X : ");
 
         jLabel5.setText("Y : ");
 
-        translasiInput.setText("Input");
-        translasiInput.addActionListener(new java.awt.event.ActionListener() {
+        translasiRight.setText("Right");
+        translasiRight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                translasiInputActionPerformed(evt);
+                translasiRightActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Rotasi");
+
+        jLabel7.setText("Angle :");
+
+        buttonRotation.setText("Rotate");
+        buttonRotation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRotationActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setText("Grafika Final Project");
+
+        translasiLeft.setText("Left");
+        translasiLeft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                translasiLeftActionPerformed(evt);
             }
         });
 
@@ -178,73 +203,99 @@ public class Panel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnOval, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTriangle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRectangle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGreen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBlue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                        .addGap(552, 552, 552))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputY)
-                            .addComponent(inputX)))
-                    .addComponent(translasiInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRectangle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnOval, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnTriangle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnGreen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnBlue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(translasiLeft)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(translasiRight))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(7, 7, 7)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(inputY)
+                                        .addComponent(inputX)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(8, 8, 8)
+                                        .addComponent(inputderajat, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel6)))
+                            .addComponent(buttonRotation, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRectangle)
-                .addGap(4, 4, 4)
-                .addComponent(btnOval)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTriangle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRed)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGreen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBlue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(translasiInput)
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLine)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRectangle)
+                        .addGap(4, 4, 4)
+                        .addComponent(btnOval)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTriangle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRed)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGreen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBlue)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(translasiRight)
+                            .addComponent(translasiLeft))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputderajat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRotation)))
                 .addContainerGap())
         );
 
@@ -252,54 +303,36 @@ public class Panel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        g.setColor(Color.WHITE); // Set the color to white
-        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
-        g.setColor(Color.BLACK); 
+        Panel.repaint();
+        g.setColor(Color.black);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineActionPerformed
-        g.setColor(Color.WHITE); // Set the color to white
-        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
-        g.setColor(Color.BLACK); 
-
-        g.drawLine(200, 100, 100, 200);
-        lx = 200;
-        ly = 100;
+        setPanelBlank();
+        g.drawLine(230, 250, 100, 200);
+        State = "Garis";
+        lx = 230;
+        ly = 250;
     }//GEN-LAST:event_btnLineActionPerformed
 
     private void btnRectangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRectangleActionPerformed
-        g.setColor(Color.WHITE); // Set the color to white
-        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
-        g.setColor(Color.BLACK); 
-
-        g.drawRect(100, 100, 150, 150);
+        setPanelBlank();
+        g.drawRect(230, 250, 200, 200);
         State = "rectangle";
-        lx = 100;
-        ly = 100;
-//        g.setColor(Color.red);
-//        g.fillRect(100, 100, 150, 150); fill warna
-//        g.Rect(100, 100, 150, 150); warna garis
+        lx = 230;
+        ly = 250;
     }//GEN-LAST:event_btnRectangleActionPerformed
 
     private void btnOvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOvalActionPerformed
-        g.setColor(Color.WHITE); // Set the color to white
-        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
-        g.setColor(Color.BLACK); 
-
-        g.drawOval(100, 100, 150, 150);
+        setPanelBlank();
+        g.drawOval(230, 250, 200, 200);
         State = "Oval";
-        lx = 100;
-        ly = 100;
-//        g.setColor(Color.red);
-//        g.fillOval(100, 100, 150, 150); fill warna
-//        g.Oval(100, 100, 150, 150); warna garis
+        lx = 230;
+        ly = 250;
     }//GEN-LAST:event_btnOvalActionPerformed
 
     private void btnTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriangleActionPerformed
-        g.setColor(Color.WHITE); // Set the color to white
-        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
-        g.setColor(Color.BLACK); 
-
+        setPanelBlank();
         State = "Triangle";
         int x[] = {50,150,250};
         int y[] = {250,50,250};
@@ -319,45 +352,48 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRectangle1ActionPerformed
 
     private void btnRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedActionPerformed
+        setPanelBlank();
         if(State == "rectangle"){
             g.setColor(Color.red);
-            g.fillRect(lx, ly, 150, 150);
+            g.fillRect(lx, ly, 200, 200);
         }else if(State == "Oval"){
             g.setColor(Color.red);
-            g.fillOval(lx, ly, 150, 150);
+            g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.red);
-            int x[] = {50,150,250};
+            int x[] = {50,200,250};
             int y[] = {250,50,250};
             g.fillPolygon(x,y,x.length);
         }
     }//GEN-LAST:event_btnRedActionPerformed
 
     private void btnGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGreenActionPerformed
+        setPanelBlank();
         if(State == "rectangle"){
             g.setColor(Color.green);
-            g.fillRect(lx, ly, 150, 150);
+            g.fillRect(lx, ly, 200, 200);
         }else if(State == "Oval"){
             g.setColor(Color.green);
-            g.fillOval(lx, ly, 150, 150);
+            g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.green);
-            int x[] = {50,150,250};
+            int x[] = {50,200,250};
             int y[] = {250,50,250};
             g.fillPolygon(x,y,x.length);
         }
     }//GEN-LAST:event_btnGreenActionPerformed
 
     private void btnBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBlueActionPerformed
+        setPanelBlank();
         if(State == "rectangle"){
             g.setColor(Color.blue);
-            g.fillRect(lx, ly, 150, 150);
+            g.fillRect(lx, ly, 200, 200);
         }else if(State == "Oval"){
             g.setColor(Color.blue);
-            g.fillOval(lx, ly, 150, 150);
+            g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.blue);
-            int x[] = {50,150,250};
+            int x[] = {50,200,250};
             int y[] = {250,50,250};
             g.fillPolygon(x,y,x.length);
         }
@@ -367,28 +403,80 @@ public class Panel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputXActionPerformed
 
-    private void translasiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiInputActionPerformed
-        g.setColor(Color.WHITE); // Set the color to white
-        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
-        g.setColor(Color.BLACK); 
-
+    private void translasiRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiRightActionPerformed
+        setPanelBlank();
+        
         int tx,ty;
         tx = Integer.parseInt(getx());
         ty = Integer.parseInt(gety());
         if(State == "rectangle"){
-            g.drawRect(lx + tx, ly + ty, 150, 150);
+            g.drawRect(lx + tx, ly + ty, 200, 200);
             lx += tx;
             ly +=ty;
         }else if(State == "Oval"){
-            g.drawOval(lx + tx, ly + ty, 150, 150);
+            g.drawOval(lx + tx, ly + ty, 200, 200);
             lx += tx;
             ly +=ty;
         }else if(State == "Triangle"){
-            int x[] = {50 + tx,150 + tx,250 + tx};
+            int x[] = {50 + tx,200 + tx,250 + tx};
             int y[] = {250 + ty,50 + ty,250 + ty};
             g.drawPolygon(x,y,x.length);
+            lx -= tx;
+            ly -=ty;
+        }else if(State == "Garis"){
+            g.drawLine(lx + tx, ly + ty, 100, 200);
+            lx -= tx;
+            ly -=ty;
         }
-    }//GEN-LAST:event_translasiInputActionPerformed
+    }//GEN-LAST:event_translasiRightActionPerformed
+
+    private void buttonRotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotationActionPerformed
+        int angle = Integer.parseInt(getderajat());
+        double move = (angle * Math.PI / 180);
+        Graphics2D graphics2D = (Graphics2D)g.create();
+        setPanelBlank();
+        
+        if(State == "rectangle"){
+            graphics2D.translate(lx, ly);
+            graphics2D.rotate(move);
+            graphics2D.drawRect(0, 0, 200, 200);
+        }else if(State == "Triangle"){
+//            int x[] = {50 + tx,200 + tx,250 + tx};
+//            int y[] = {250 + ty,50 + ty,250 + ty};
+//            g.drawPolygon(x,y,x.length);
+        }else if(State == "Garis"){
+            graphics2D.translate(lx, ly);
+            graphics2D.rotate(move);
+            graphics2D.drawLine(0, 0, 100, 200);
+        }
+    }//GEN-LAST:event_buttonRotationActionPerformed
+
+    private void translasiLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiLeftActionPerformed
+        setPanelBlank();
+        
+        int tx,ty;
+        tx = Integer.parseInt(getx());
+        ty = Integer.parseInt(gety());
+        if(State == "rectangle"){
+            g.drawRect(lx - tx, ly - ty, 200, 200);
+            lx -= tx;
+            ly -=ty;
+        }else if(State == "Oval"){
+            g.drawOval(lx - tx, ly - ty, 200, 200);
+            lx -= tx;
+            ly -=ty;
+        }else if(State == "Triangle"){
+            int x[] = {50 - tx,200 - tx,250 - tx};
+            int y[] = {250 - ty,50 - ty,250 - ty};
+            g.drawPolygon(x,y,x.length);
+            lx -= tx;
+            ly -=ty;
+        }else if(State == "Garis"){
+            g.drawLine(lx - tx, ly - ty, 100, 200);
+            lx -= tx;
+            ly -=ty;
+        }
+    }//GEN-LAST:event_translasiLeftActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,14 +526,20 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JButton btnRectangle1;
     private javax.swing.JButton btnRed;
     private javax.swing.JButton btnTriangle;
+    private javax.swing.JButton buttonRotation;
     private javax.swing.JTextField inputX;
     private javax.swing.JTextField inputY;
+    private javax.swing.JTextField inputderajat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton translasiInput;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton translasiLeft;
+    private javax.swing.JButton translasiRight;
     // End of variables declaration//GEN-END:variables
 
     public String getx(){
@@ -454,6 +548,16 @@ public class Panel extends javax.swing.JFrame {
     
     public String gety(){
         return inputY.getText();
+    }
+    
+    public String getderajat(){
+        return inputderajat.getText();
+    }
+    
+    void setPanelBlank(){
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK);
     }
     
 }
