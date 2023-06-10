@@ -117,8 +117,6 @@ def draw_circle(radius):
 def draw_line():
     for x, y in DDA(0, 0, 0, 100):
         draw_rectangle(ttl, x, y)
-        print("Ini dari state")
-        print(state)
 
 def draw_triangle():
     points = []
