@@ -252,17 +252,26 @@ public class Panel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        Panel.repaint();
-        g.setColor(Color.black);
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK); 
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineActionPerformed
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK); 
+
         g.drawLine(200, 100, 100, 200);
         lx = 200;
         ly = 100;
     }//GEN-LAST:event_btnLineActionPerformed
 
     private void btnRectangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRectangleActionPerformed
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK); 
+
         g.drawRect(100, 100, 150, 150);
         State = "rectangle";
         lx = 100;
@@ -273,6 +282,10 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRectangleActionPerformed
 
     private void btnOvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOvalActionPerformed
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK); 
+
         g.drawOval(100, 100, 150, 150);
         State = "Oval";
         lx = 100;
@@ -283,6 +296,10 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOvalActionPerformed
 
     private void btnTriangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriangleActionPerformed
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK); 
+
         State = "Triangle";
         int x[] = {50,150,250};
         int y[] = {250,50,250};
