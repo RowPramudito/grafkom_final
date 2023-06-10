@@ -152,14 +152,14 @@ public class Panel extends javax.swing.JFrame {
 
         jLabel3.setText("Translasi");
 
-        inputX.setText("Input X");
+        inputX.setText("0");
         inputX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputXActionPerformed(evt);
             }
         });
 
-        inputY.setText("Input Y");
+        inputY.setText("0");
 
         jLabel4.setText("X : ");
 
@@ -368,6 +368,10 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_inputXActionPerformed
 
     private void translasiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiInputActionPerformed
+        g.setColor(Color.WHITE); // Set the color to white
+        g.fillRect(0, 0, Panel.getWidth(), Panel.getHeight()); // Clear the canvas
+        g.setColor(Color.BLACK); 
+
         int tx,ty;
         tx = Integer.parseInt(getx());
         ty = Integer.parseInt(gety());
