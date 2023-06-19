@@ -24,6 +24,7 @@ public class Panel extends javax.swing.JFrame {
         g = Panel.getGraphics();
         Panel.paintComponents(g);
     }
+    private int rotationAngle = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -393,7 +394,7 @@ public class Panel extends javax.swing.JFrame {
             g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.blue);
-            int x[] = {50,200,250};
+            int x[] = {50,150,250};
             int y[] = {250,50,250};
             g.fillPolygon(x,y,x.length);
         }
@@ -431,23 +432,50 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_translasiRightActionPerformed
 
     private void buttonRotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotationActionPerformed
+        
         int angle = Integer.parseInt(getderajat());
-        double move = (angle * Math.PI / 180);
+        rotationAngle += angle;
+        double move = (rotationAngle * Math.PI / 180);
         Graphics2D graphics2D = (Graphics2D)g.create();
+
         setPanelBlank();
         
         if(State == "rectangle"){
-            graphics2D.translate(lx, ly);
+
+            int width = 200; int height = 200;
+            int centroidX = lx + (width / 2);
+            int centroidY = ly + (height / 2);
+
+            graphics2D.translate(centroidX, centroidY);
             graphics2D.rotate(move);
-            graphics2D.drawRect(0, 0, 200, 200);
+            graphics2D.drawRect(-width/2, -height/2, width, height);
+
         }else if(State == "Triangle"){
-//            int x[] = {50 + tx,200 + tx,250 + tx};
-//            int y[] = {250 + ty,50 + ty,250 + ty};
-//            g.drawPolygon(x,y,x.length);
+    
+            int x[] = {50, 150, 250};
+            int y[] = {250, 50, 250};
+
+            // Calculate the centroid of the triangle
+            int centroidX = (x[0] + x[1] + x[2]) / 3;
+            int centroidY = (y[0] + y[1] + y[2]) / 3;
+
+            graphics2D.rotate(move, centroidX, centroidY); // Rotate around the centroid
+            graphics2D.drawPolygon(x, y, x.length);
+
         }else if(State == "Garis"){
-            graphics2D.translate(lx, ly);
-            graphics2D.rotate(move);
-            graphics2D.drawLine(0, 0, 100, 200);
+            int x1 = lx;
+            int y1 = ly;
+            int x2 = lx + 100;
+            int y2 = ly + 200;
+
+            int centerX = (x1 + x2) / 2;
+            int centerY = (y1 + y2) / 2;
+
+            graphics2D.translate(centerX, centerY); // Translate to the center of the line
+            graphics2D.rotate(move); // Rotate around the center
+
+            // Draw the rotated line
+            graphics2D.drawLine(-50, -100, 50, 100);
         }
     }//GEN-LAST:event_buttonRotationActionPerformed
 
