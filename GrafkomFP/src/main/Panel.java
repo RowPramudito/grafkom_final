@@ -60,7 +60,6 @@ public class Panel extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         buttonRotation = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        translasiLeft = new javax.swing.JButton();
 
         btnClear1.setText("Clear");
         btnClear1.addActionListener(new java.awt.event.ActionListener() {
@@ -170,10 +169,10 @@ public class Panel extends javax.swing.JFrame {
 
         jLabel5.setText("Y : ");
 
-        translasiRight.setText("Right");
+        translasiRight.setText("Translasi");
         translasiRight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                translasiRightActionPerformed(evt);
+                btnTranslasiActionPerformed(evt);
             }
         });
 
@@ -184,19 +183,12 @@ public class Panel extends javax.swing.JFrame {
         buttonRotation.setText("Rotate");
         buttonRotation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRotationActionPerformed(evt);
+                btnRotationActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Grafika Final Project");
-
-        translasiLeft.setText("Left");
-        translasiLeft.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                translasiLeftActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,7 +216,6 @@ public class Panel extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(translasiLeft)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(translasiRight))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -287,8 +278,7 @@ public class Panel extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(translasiRight)
-                            .addComponent(translasiLeft))
+                            .addComponent(translasiRight))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -338,6 +328,8 @@ public class Panel extends javax.swing.JFrame {
         int x[] = {50,150,250};
         int y[] = {250,50,250};
         g.drawPolygon(x,y,x.length);
+        lx = 50;
+        ly = 250;
     }//GEN-LAST:event_btnTriangleActionPerformed
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
@@ -362,8 +354,8 @@ public class Panel extends javax.swing.JFrame {
             g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.red);
-            int x[] = {50,200,250};
-            int y[] = {250,50,250};
+            int x[] = {lx, lx + 100, lx + 200};
+            int y[] = {ly, ly - 200, ly};
             g.fillPolygon(x,y,x.length);
         }
     }//GEN-LAST:event_btnRedActionPerformed
@@ -378,8 +370,8 @@ public class Panel extends javax.swing.JFrame {
             g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.green);
-            int x[] = {50,200,250};
-            int y[] = {250,50,250};
+            int x[] = {lx, lx + 100, lx + 200};
+            int y[] = {ly, ly - 200, ly};
             g.fillPolygon(x,y,x.length);
         }
     }//GEN-LAST:event_btnGreenActionPerformed
@@ -394,8 +386,8 @@ public class Panel extends javax.swing.JFrame {
             g.fillOval(lx, ly, 200, 200);
         }else if(State == "Triangle"){
             g.setColor(Color.blue);
-            int x[] = {50,150,250};
-            int y[] = {250,50,250};
+            int x[] = {lx, lx + 100, lx + 200};
+            int y[] = {ly, ly - 200, ly};
             g.fillPolygon(x,y,x.length);
         }
     }//GEN-LAST:event_btnBlueActionPerformed
@@ -404,7 +396,7 @@ public class Panel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputXActionPerformed
 
-    private void translasiRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiRightActionPerformed
+    private void btnTranslasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiRightActionPerformed
         setPanelBlank();
         
         int tx,ty;
@@ -419,11 +411,11 @@ public class Panel extends javax.swing.JFrame {
             lx += tx;
             ly +=ty;
         }else if(State == "Triangle"){
-            int x[] = {50 + tx,200 + tx,250 + tx};
-            int y[] = {250 + ty,50 + ty,250 + ty};
+            int x[] = {lx + tx,lx + 100 + tx,lx + 200 + tx};
+            int y[] = {ly + ty,ly - 200 + ty,ly + ty};
             g.drawPolygon(x,y,x.length);
-            lx -= tx;
-            ly -=ty;
+            lx += tx;
+            ly += ty;
         }else if(State == "Garis"){
             g.drawLine(lx + tx, ly + ty, 100, 200);
             lx -= tx;
@@ -431,7 +423,7 @@ public class Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_translasiRightActionPerformed
 
-    private void buttonRotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotationActionPerformed
+    private void btnRotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotationActionPerformed
         
         int angle = Integer.parseInt(getderajat());
         rotationAngle += angle;
@@ -452,8 +444,8 @@ public class Panel extends javax.swing.JFrame {
 
         }else if(State == "Triangle"){
     
-            int x[] = {50, 150, 250};
-            int y[] = {250, 50, 250};
+            int x[] = {lx, lx + 100, lx + 200};
+            int y[] = {ly, ly - 200, ly};
 
             // Calculate the centroid of the triangle
             int centroidX = (x[0] + x[1] + x[2]) / 3;
@@ -478,33 +470,6 @@ public class Panel extends javax.swing.JFrame {
             graphics2D.drawLine(-50, -100, 50, 100);
         }
     }//GEN-LAST:event_buttonRotationActionPerformed
-
-    private void translasiLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_translasiLeftActionPerformed
-        setPanelBlank();
-        
-        int tx,ty;
-        tx = Integer.parseInt(getx());
-        ty = Integer.parseInt(gety());
-        if(State == "rectangle"){
-            g.drawRect(lx - tx, ly - ty, 200, 200);
-            lx -= tx;
-            ly -=ty;
-        }else if(State == "Oval"){
-            g.drawOval(lx - tx, ly - ty, 200, 200);
-            lx -= tx;
-            ly -=ty;
-        }else if(State == "Triangle"){
-            int x[] = {50 - tx,200 - tx,250 - tx};
-            int y[] = {250 - ty,50 - ty,250 - ty};
-            g.drawPolygon(x,y,x.length);
-            lx -= tx;
-            ly -=ty;
-        }else if(State == "Garis"){
-            g.drawLine(lx - tx, ly - ty, 100, 200);
-            lx -= tx;
-            ly -=ty;
-        }
-    }//GEN-LAST:event_translasiLeftActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,7 +531,6 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JButton translasiLeft;
     private javax.swing.JButton translasiRight;
     // End of variables declaration//GEN-END:variables
 
